@@ -1,0 +1,17 @@
+<p>index works!</p>
+
+
+<h2>Liste des tournois</h2>
+<div *ngIf="tournamentSub | async">
+  <div *ngFor="let tournament of tournaments">
+    <h2>{{ tournament.name }}</h2>
+    <p>Location: {{ tournament.location }}</p>
+    <p>Categories: {{ tournament.categories }}</p>
+    <p>Elo: {{ tournament.eloMin }} - {{tournament.eloMax}}</p>
+    <p>Statu {{ tournament.status }}</p>
+    <p>Fin des inscriptions: {{ tournament.endOfRegistration }}</p>
+    <p>Joueurs: {{tournament.count}} / 16</p>
+  </div>
+
+
+</div>

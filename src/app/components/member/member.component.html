@@ -1,0 +1,24 @@
+<form [formGroup]="userForm" (ngSubmit)="addUser()" *ngIf="!isError">
+
+  <input type="text" placeholder="Pseudo" formControlName="username">
+
+  <input type="text" placeholder="Email" formControlName="email">
+
+  <input type="number" placeholder="ELO (0-3000)" formControlName="elo">
+
+  <input type="date" placeholder="Date de naissance" formControlName="birthDate">
+
+  <select formControlName="gender">
+    <optgroup label="Gender">
+      <option value="empty"></option>
+      <option value="male">Male</option>
+      <option value="female">Female</option>
+      <option value="other">Other</option>
+    </optgroup>
+  </select>
+
+  <input type="submit" value="Sauvegarder" [disabled]="!userForm.valid">
+
+</form>
+
+

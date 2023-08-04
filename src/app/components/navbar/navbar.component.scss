@@ -1,0 +1,56 @@
+header {
+  width: 20vw;
+  min-height: 100%;
+  background-color: lightslategray;
+}
+nav {
+  display: flex;
+  padding: 1rem 2rem;
+
+  .spacer {
+    flex: 0.5;
+  }
+}
+ul {
+  display: flex;
+  width: 20vw;
+  justify-content: space-evenly;
+
+  ul {
+    flex-flow: column;
+    width: fit-content;
+    position: absolute;
+    padding: 9px;
+  }
+}
+
+
+
+li {
+  list-style: none;
+
+}
+
+
+a {
+  text-decoration: none;
+  color : #000000;
+  user-select: none;
+}
+
+a:hover {
+  color : rgb(160, 188, 217);
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid whitesmoke;
+}
+
+a:active {
+  color : pink;
+  border-color: rgb(160, 188, 217);
+}
+
+
+
+.isActive {
+  color : pink;
+}

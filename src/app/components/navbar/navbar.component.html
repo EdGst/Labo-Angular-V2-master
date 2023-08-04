@@ -1,0 +1,14 @@
+<nav>
+  <div class="spacer"></div>
+  <ul>
+    <li *ngFor="let link of navLinks">
+
+      <a *ngIf="link.isAccessible" [ngClass]="{isActive: link.isVisible}" (click)="toggleVisible(link)" [routerLink]="link.url">{{link.title}}</a>
+      <ul *ngIf="link.children && link.isVisible">
+        <li *ngFor="let child of link.children">
+          <a [routerLink]="child.url">{{child.title}}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
