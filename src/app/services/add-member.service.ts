@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
-
+import {catchError, map, Observable, of} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {User, UserRegister} from "../shared/models/user";
 
@@ -18,5 +17,19 @@ export class AddMemberService {
 
   addUser(user: UserRegister){
     return this._httpclient.post(this.BASE_URL, user);
+  }
+
+  checkEmailExists(email: string): Observable<boolean> {
+    return this._httpclient.head<void>(`${this.BASE_URL}/existsEmail?Email=${email}`).pipe(
+      map(() => true),
+      catchError(() => of(false))
+    );
+  }
+
+  checkUsernameExists(username: string): Observable<boolean> {
+    return this._httpclient.head<void>(`${this.BASE_URL}/existsUsername?Username=${username}`).pipe(
+      map(() => true),
+      catchError(() => of(false))
+    );
   }
 }

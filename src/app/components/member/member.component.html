@@ -1,24 +1,45 @@
-<form [formGroup]="userForm" (ngSubmit)="addUser()" *ngIf="!isError">
+<div class="p-d-flex-center">
+  <div class="p-card p-card-custom" style="width: 25vw;">
+    <h2 class="p-mb-4">Add Member</h2>
 
-  <input type="text" placeholder="Pseudo" formControlName="username">
+    <form [formGroup]="userForm" (ngSubmit)="addUser()" *ngIf="!isError">
 
-  <input type="text" placeholder="Email" formControlName="email">
+      <div class="p-field">
+        <label>Username</label>
+        <input type="text" pInputText class="p-inputtext" formControlName="username" (blur)="checkUsernameAvailability()">
+        <div *ngIf="userForm.get('username')?.hasError('usernameExists')" class="error-message">
+          Username already exists.
+        </div>
+      </div>
 
-  <input type="number" placeholder="ELO (0-3000)" formControlName="elo">
+      <div class="p-field">
+        <label>Email</label>
+        <input type="text" pInputText class="p-inputtext" formControlName="email" (blur)="checkEmailAvailability()">
+        <div *ngIf="userForm.get('email')?.hasError('emailExists')" class="error-message">
+          Email already exists.
+        </div>
+      </div>
 
-  <input type="date" placeholder="Date de naissance" formControlName="birthDate">
+      <div class="p-field row w-12">
+        <span class="p-float-label elo">
+          <p-inputNumber id="elo" class="elo" formControlName="elo"></p-inputNumber>
+          <label for="elo">Elo (0-3000)</label>
+        </span>
 
-  <select formControlName="gender">
-    <optgroup label="Gender">
-      <option value="empty"></option>
-      <option value="male">Male</option>
-      <option value="female">Female</option>
-      <option value="other">Other</option>
-    </optgroup>
-  </select>
+        <span class="p-float-label date">
+        <p-calendar id="birthdate" class="date" [showIcon]="true" formControlName="birthDate"></p-calendar>
+        <label for="birthdate">Date de naissance</label>
+        </span>
 
-  <input type="submit" value="Sauvegarder" [disabled]="!userForm.valid">
+      </div>
 
-</form>
+      <div class="p-field">
+        <label>Gender</label>
+        <p-dropdown [options]="genderOptions" formControlName="gender"></p-dropdown>
+      </div>
 
+      <button type="submit" pButton class="btn btn-primary" [disabled]="!userForm.valid || userForm.pending">Sauvegarder</button>
 
+    </form>
+  </div>
+</div>

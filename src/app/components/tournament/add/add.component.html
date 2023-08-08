@@ -1,1 +1,43 @@
-<p>add works!</p>
+<p-card class="flex flex-column">
+  <form [formGroup]="tournamentForm" (ngSubmit)="addTournament()">
+    <label for="name">Name:</label>
+    <input type="text" pInputText id="name" formControlName="name">
+
+    <label for="location">Location:</label>
+    <input type="text" pInputText id="location" formControlName="location">
+
+    <label for="minPlayers">Min Players:</label>
+    <p-inputNumber inputId="minPlayers"  id="minPlayers" formControlName="minPlayers"></p-inputNumber>
+
+    <label for="maxPlayers">Max Players:</label>
+    <p-inputNumber inputId="maxPlayers" id="maxPlayers" formControlName="maxPlayers"></p-inputNumber>
+
+    <label for="eloMin">Elo Min:</label>
+    <p-inputNumber inputId="eloMin" id="eloMin" formControlName="eloMin"></p-inputNumber>
+
+    <label for="eloMax">Elo Max:</label>
+    <p-inputNumber inputId="eloMax" id="eloMax" formControlName="eloMax"></p-inputNumber>
+
+
+    <label>Categories</label>
+    <p-multiSelect [options]="categories" formControlName="categories" ></p-multiSelect>
+
+    <div>
+      <label for="womenOnly">Women Only:</label>
+      <p-inputSwitch formControlName="womenOnly" id="womenOnly"></p-inputSwitch>
+    </div>
+
+    <label for="endOfRegistrationDate">End Of Registration Date:</label>
+    <input type="date" id="endOfRegistrationDate" formControlName="endOfRegistrationDate">
+
+
+    <p-button type="submit" label="Ajouter le tournoi"></p-button>
+
+    <p *ngIf="isError">An error occurred while adding the tournament.</p>
+  </form>
+</p-card>
+
+
+
+
+

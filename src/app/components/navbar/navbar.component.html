@@ -1,14 +1,30 @@
 <nav>
-  <div class="spacer"></div>
   <ul>
-    <li *ngFor="let link of navLinks">
+    <!-- Lien pour la page d'accueil -->
+    <li *ngIf="true">
+      <a routerLink="/home">Acceuil</a>
+    </li>
 
-      <a *ngIf="link.isAccessible" [ngClass]="{isActive: link.isVisible}" (click)="toggleVisible(link)" [routerLink]="link.url">{{link.title}}</a>
-      <ul *ngIf="link.children && link.isVisible">
-        <li *ngFor="let child of link.children">
-          <a [routerLink]="child.url">{{child.title}}</a>
-        </li>
+    <!-- Lien pour la page des tournois -->
+    <li>
+      <a (click)="toggleVisible(navLinks[1])">Tournois</a>
+      <!-- Sous-liens pour les enfants de la page des tournois -->
+      <ul *ngIf="showTournamentsChildren">
+        <li><a routerLink="/tournament/index">Index</a></li>
+        <li><a routerLink="/tournament/add" *ngIf="isAdmin()">Nouveau</a></li>
       </ul>
     </li>
+
+    <!-- Lien pour la page des nouveaux membres (visible uniquement pour les administrateurs) -->
+    <li *ngIf="isAdmin()">
+      <a routerLink="/member">Nouveau membre</a>
+    </li>
+
+    <!-- Lien pour la page de connexion (visible uniquement si déconnecté) -->
+    <li *ngIf="!isConnected">
+      <a routerLink="/login">Login</a>
+    </li>
   </ul>
+
+  <p-button label="déco" *ngIf="isConnected" (click)="logout()"></p-button>
 </nav>

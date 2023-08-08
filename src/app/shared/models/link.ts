@@ -3,5 +3,4 @@ export interface Link {
   url? : string;
   children? : Link[];
   isVisible? : boolean;
-  isAccessible?: boolean
 }

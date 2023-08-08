@@ -1,8 +1,21 @@
-<p>index works!</p>
-
-
 <h2>Liste des tournois</h2>
-<div *ngIf="tournamentSub | async">
+<form [formGroup]="searchForm" (ngSubmit)="getTournois()">
+  <label for="name">Nom du tournoi :</label>
+  <input type="text" id="name" formControlName="name">
+
+  <label for="category">Catégorie du tournoi :</label>
+  <input type="text" id="category" formControlName="category">
+
+  <label for="status">Statut du tournoi :</label>
+  <input type="text" id="status" formControlName="status">
+
+  <label for="womenOnly">Femmes uniquement :</label>
+  <input type="checkbox" id="womenOnly" formControlName="womenOnly">
+
+  <button type="submit">Rechercher</button>
+</form>
+
+<div *ngIf="tournaments">
   <div *ngFor="let tournament of tournaments">
     <h2>{{ tournament.name }}</h2>
     <p>Location: {{ tournament.location }}</p>
@@ -11,7 +24,8 @@
     <p>Statu {{ tournament.status }}</p>
     <p>Fin des inscriptions: {{ tournament.endOfRegistration }}</p>
     <p>Joueurs: {{tournament.count}} / 16</p>
+    <p>Femmes uniquement: {{tournament.womenOnly}}</p>
+    <p-button routerLink="/tournament/details/{{tournament.id}}" label="Détail"></p-button>
+    <p-button (click)="deleteTournois(tournament.id)" label="Delete"></p-button>
   </div>
-
-
 </div>

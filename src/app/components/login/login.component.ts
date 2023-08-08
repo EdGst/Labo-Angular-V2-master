@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
         next: (token: Token) => {
           if (token !== undefined) {
             console.log('Login successful. Token:', token.token);
+            window.location.reload();
           } else {
             console.error('Authentication token is undefined.');
           }

@@ -1,56 +1,42 @@
-header {
-  width: 20vw;
-  min-height: 100%;
-  background-color: lightslategray;
-}
 nav {
+  background-color: #333; /* Couleur de fond de la navbar */
   display: flex;
-  padding: 1rem 2rem;
-
-  .spacer {
-    flex: 0.5;
-  }
+  justify-content: space-between; /* Place les éléments au début, au milieu et à la fin de la navbar */
+  padding: 10px;
 }
+
 ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   display: flex;
-  width: 20vw;
-  justify-content: space-evenly;
-
-  ul {
-    flex-flow: column;
-    width: fit-content;
-    position: absolute;
-    padding: 9px;
-  }
 }
-
 
 
 li {
-  list-style: none;
-
+  margin-right: 20px; /* Espacement entre les éléments de la navbar */
+  position: relative;
 }
 
-
 a {
+  color: white;
   text-decoration: none;
-  color : #000000;
-  user-select: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
 a:hover {
-  color : rgb(160, 188, 217);
-  padding-bottom: 0.3rem;
-  border-bottom: 1px solid whitesmoke;
+  background-color: #555; /* Couleur de fond au survol des liens */
 }
 
-a:active {
-  color : pink;
-  border-color: rgb(160, 188, 217);
+button {
+  color: white;
+  background-color: #cc0000; /* Couleur du bouton de déconnexion */
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
 }
 
-
-
-.isActive {
-  color : pink;
+button:hover {
+  background-color: #ff0000; /* Couleur de fond au survol du bouton de déconnexion */
 }
