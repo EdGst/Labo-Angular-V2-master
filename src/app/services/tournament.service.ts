@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {TournamentIndex} from "../shared/models/tournamentIndex";
 import {TournamentAdd} from "../shared/models/tournamentAdd";
 import {TournamentDetails} from "../shared/models/tournamentDetails";
+import {Match} from "../shared/models/match";
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +26,7 @@ export class TournamentService {
   getTourna(params: {
     offset?: number;
     name?: string;
-    category?: string;
+    category?: string[];
     status?: string[];
     womenOnly?: boolean;
   }): Observable<TournamentIndex> {
@@ -38,14 +39,16 @@ export class TournamentService {
       httpParams = httpParams.set('Name', params.name);
     }
     if (params.category) {
-      httpParams = httpParams.set('Category', params.category);
+      for(const categories of params.category){
+        httpParams = httpParams.append('Category', categories);
+      }
     }
     if (params.status) {
       for (const status of params.status) {
         httpParams = httpParams.append('Statuses', status);
       }
     }
-    if (params.womenOnly !== undefined) {
+    if (params.womenOnly) {
       httpParams = httpParams.set('WomenOnly', params.womenOnly.toString());
     }
 
@@ -58,6 +61,14 @@ export class TournamentService {
 
   deleteTournament(id: string) {
     return this._httpclient.delete(`${this.URL}/Tournament/${id}`);
+  }
+
+  getMatches(tournamentId: string | undefined, round: number) : Observable<Match[]> {
+    return this._httpclient.get<Match[]>(`${this.URL}/Match?tournamentId=${tournamentId}&round=${round}`)
+  }
+
+  updateMatchResult(id: string, match: Match): Observable<void> {
+    return this._httpclient.patch<void>(`${this.URL}/Match${id}`, match);
   }
 
 }

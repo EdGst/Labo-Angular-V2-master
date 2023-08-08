@@ -3,11 +3,11 @@
   <label for="name">Nom du tournoi :</label>
   <input type="text" id="name" formControlName="name">
 
-  <label for="category">Catégorie du tournoi :</label>
-  <input type="text" id="category" formControlName="category">
 
-  <label for="status">Statut du tournoi :</label>
-  <input type="text" id="status" formControlName="status">
+  <p-multiSelect [options]="tournamentCategories" formControlName="category"></p-multiSelect>
+
+
+  <p-multiSelect [options]="tournamentStatus" formControlName="status"></p-multiSelect>
 
   <label for="womenOnly">Femmes uniquement :</label>
   <input type="checkbox" id="womenOnly" formControlName="womenOnly">
@@ -15,17 +15,31 @@
   <button type="submit">Rechercher</button>
 </form>
 
-<div *ngIf="tournaments">
-  <div *ngFor="let tournament of tournaments">
-    <h2>{{ tournament.name }}</h2>
-    <p>Location: {{ tournament.location }}</p>
-    <p>Categories: {{ tournament.categories }}</p>
-    <p>Elo: {{ tournament.eloMin }} - {{tournament.eloMax}}</p>
-    <p>Statu {{ tournament.status }}</p>
-    <p>Fin des inscriptions: {{ tournament.endOfRegistration }}</p>
-    <p>Joueurs: {{tournament.count}} / 16</p>
-    <p>Femmes uniquement: {{tournament.womenOnly}}</p>
-    <p-button routerLink="/tournament/details/{{tournament.id}}" label="Détail"></p-button>
-    <p-button (click)="deleteTournois(tournament.id)" label="Delete"></p-button>
-  </div>
-</div>
+<table *ngIf="tournaments">
+  <thead>
+  <tr>
+    <th>Nom</th>
+    <th>Location</th>
+    <th>Catégories</th>
+    <th>Elo</th>
+    <th>Statut</th>
+    <th>Fin des inscriptions</th>
+    <th>Joueurs</th>
+    <th>Détail</th>
+    <th>Supprimer</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let tournament of tournaments">
+    <td>{{ tournament.name }}</td>
+    <td>{{ tournament.location }}</td>
+    <td>{{ tournament.categories?.join(', ') }}</td>
+    <td>{{ tournament.eloMin }} - {{tournament.eloMax}}</td>
+    <td>{{ tournament.status }}</td>
+    <td>{{ tournament.endOfRegistration}}</td>
+    <td>{{tournament.count}} / 16</td>
+    <td><button pButton type="button" icon="pi pi-info" routerLink="/tournament/details/{{tournament.id}}" label="Détail"></button></td>
+    <td><button pButton type="button" icon="pi pi-trash" (click)="deleteTournois(tournament.id)" label="Supprimer"></button></td>
+  </tr>
+  </tbody>
+</table>

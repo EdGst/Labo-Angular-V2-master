@@ -20,11 +20,10 @@
       <a routerLink="/member">Nouveau membre</a>
     </li>
 
-    <!-- Lien pour la page de connexion (visible uniquement si déconnecté) -->
-    <li *ngIf="!isConnected">
-      <a routerLink="/login">Login</a>
-    </li>
   </ul>
 
-  <p-button label="déco" *ngIf="isConnected" (click)="logout()"></p-button>
+  <p-button routerLink="/login" label="Connection" *ngIf="!isConnected" styleClass="login-button"></p-button>
+
+  <!-- Bouton de déconnexion (visible uniquement si connecté) -->
+  <p-button label="Déconnexion" *ngIf="isConnected" (click)="logout()" styleClass="logout-button"></p-button>
 </nav>

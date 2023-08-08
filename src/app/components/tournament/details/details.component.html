@@ -1,2 +1,33 @@
-<h2>Details du tournois {{tournamentDetails?.name}}</h2>
+<!-- Affichez les détails du tournoi -->
 
+<div *ngIf="tournamentDetails">
+  <h2>{{ tournamentDetails.name }}</h2>
+  <!-- Affichez d'autres détails du tournoi -->
+</div>
+
+<!-- Affichez les boutons pour sélectionner les rounds -->
+
+<div>
+  <button (click)="loadMatches(tournamentDetails.id, 1)">Round 1</button>
+  <button (click)="loadMatches(tournamentDetails.id,2)">Round 2</button>
+</div>
+
+<!-- Affichez les détails du match du Round 1 -->
+
+<div *ngIf="matchRound1">
+  <h3>Round 1 Match</h3>
+  <p>Black: {{ matchRound1.blackName }}</p>
+  <p>White: {{ matchRound1.whiteName }}</p>
+  <p>Result: {{ matchRound1.result }}</p>
+  <!-- Affichez d'autres détails du match pour le Round 1 -->
+</div>
+
+<!-- Affichez les détails du match du Round 2 -->
+
+<div *ngIf="matchRound2">
+  <h3>Round 2 Match</h3>
+  <p>Black: {{ matchRound2.blackName }}</p>
+  <p>White: {{ matchRound2.whiteName }}</p>
+  <p>Result: {{ matchRound2.result }}</p>
+
+</div>

@@ -1,7 +1,9 @@
 nav {
-  background-color: #333; /* Couleur de fond de la navbar */
   display: flex;
-  justify-content: space-between; /* Place les éléments au début, au milieu et à la fin de la navbar */
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  color: white;
   padding: 10px;
 }
 
@@ -10,33 +12,24 @@ ul {
   margin: 0;
   padding: 0;
   display: flex;
+  gap: 20px;
 }
 
-
-li {
-  margin-right: 20px; /* Espacement entre les éléments de la navbar */
-  position: relative;
-}
-
-a {
-  color: white;
+li a {
   text-decoration: none;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-a:hover {
-  background-color: #555; /* Couleur de fond au survol des liens */
-}
-
-button {
   color: white;
-  background-color: #cc0000; /* Couleur du bouton de déconnexion */
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
 }
 
-button:hover {
-  background-color: #ff0000; /* Couleur de fond au survol du bouton de déconnexion */
+.logout-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
 }
