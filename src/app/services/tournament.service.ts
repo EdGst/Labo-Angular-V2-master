@@ -5,6 +5,7 @@ import {TournamentIndex} from "../shared/models/tournamentIndex";
 import {TournamentAdd} from "../shared/models/tournamentAdd";
 import {TournamentDetails} from "../shared/models/tournamentDetails";
 import {Match} from "../shared/models/match";
+import {User} from "../shared/models/user";
 
 @Injectable({
   providedIn: 'root'
@@ -67,8 +68,25 @@ export class TournamentService {
     return this._httpclient.get<Match[]>(`${this.URL}/Match?tournamentId=${tournamentId}&round=${round}`)
   }
 
+  start(tournamentId: string) {
+    return this._httpclient.patch(`${this.URL}/Tournament/${tournamentId}/start`, tournamentId)
+  }
+
+  nextRound(tournamentId: string) {
+    return this._httpclient.patch(`${this.URL}/Tournament/${tournamentId}/nextRound`, tournamentId)
+  }
+
+
   updateMatchResult(id: string, match: Match): Observable<void> {
     return this._httpclient.patch<void>(`${this.URL}/Match${id}`, match);
+  }
+
+  tournamentInscription(id: string | undefined, newInscription: string | undefined) : Observable<any> {
+    return this._httpclient.post(`${this.URL}/TournamentInscription/${id}`, newInscription )
+  }
+
+  tournamentDesinscription(id: string | undefined): Observable<any> {
+    return this._httpclient.delete(`${this.URL}/TournamentInscription/${id}`);
   }
 
 }

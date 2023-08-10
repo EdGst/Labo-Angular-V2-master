@@ -46,6 +46,9 @@ export class AuthenticationService implements OnInit{
   get token(): string | undefined {
     return this._userToken?.token
   }
+  getToken(): Token | undefined {
+    return this.authTokenSubject.getValue();
+  }
 
   logout(): void {
     this.authTokenSubject.next(undefined);

@@ -10,6 +10,10 @@ import {CardModule} from "primeng/card";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DropdownModule} from "primeng/dropdown";
 import {CalendarModule} from "primeng/calendar";
+import {SpinnerModule} from "primeng/spinner";
+import {StepsModule} from "primeng/steps";
+import {PanelModule} from "primeng/panel";
+import {TableModule} from "primeng/table";
 
 
 
@@ -29,7 +33,11 @@ import {CalendarModule} from "primeng/calendar";
     MultiSelectModule,
     CardModule,
     DropdownModule,
-    CalendarModule
+    CalendarModule,
+    SpinnerModule,
+    StepsModule,
+      PanelModule,
+      TableModule
   ]
 
 })

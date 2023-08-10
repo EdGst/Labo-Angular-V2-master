@@ -18,9 +18,12 @@ export class AuthInterceptor implements HttpInterceptor {
 
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const authToken = localStorage.getItem('token');
-
+    const authToken : string | undefined = this.authService.token;
+    console.log(authToken + "_________1")
     if (authToken) {
+
+      console.log(authToken + "_________2")
+
       // Clonez la requête et ajoutez l'en-tête d'autorisation avec le token
       const authReq = request.clone({
         setHeaders: {

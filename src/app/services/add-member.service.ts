@@ -21,7 +21,7 @@ export class AddMemberService {
 
   checkEmailExists(email: string): Observable<boolean> {
     return this._httpclient.head<void>(`${this.BASE_URL}/existsEmail?Email=${email}`).pipe(
-      map(() => true),
+      map(() => true), // permet une transformation, attribut une valeur
       catchError(() => of(false))
     );
   }

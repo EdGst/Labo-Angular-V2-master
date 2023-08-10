@@ -27,6 +27,7 @@
     <th>Joueurs</th>
     <th>Détail</th>
     <th>Supprimer</th>
+    <th>S'inscrire/Désinscrire</th>
   </tr>
   </thead>
   <tbody>
@@ -40,6 +41,8 @@
     <td>{{tournament.count}} / 16</td>
     <td><button pButton type="button" icon="pi pi-info" routerLink="/tournament/details/{{tournament.id}}" label="Détail"></button></td>
     <td><button pButton type="button" icon="pi pi-trash" (click)="deleteTournois(tournament.id)" label="Supprimer"></button></td>
+    <td *ngIf="!tournament.isRegistered"><button pButton type="button" icon="pi pi-trash" (click)="tournamentInscription(tournament.id)" label="S'inscrire"></button></td>
+    <td *ngIf="tournament.isRegistered" ><button pButton type="button" icon="pi pi-trash" (click)="tournamentUnsub(tournament.id)" label="Se désinscrire"></button></td>
   </tr>
   </tbody>
 </table>
