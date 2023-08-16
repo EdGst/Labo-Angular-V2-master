@@ -7,13 +7,16 @@ import {InputNumberModule} from "primeng/inputnumber";
 import {InputSwitchModule} from "primeng/inputswitch";
 import {MultiSelectModule} from "primeng/multiselect";
 import {CardModule} from "primeng/card";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {DropdownModule} from "primeng/dropdown";
 import {CalendarModule} from "primeng/calendar";
 import {SpinnerModule} from "primeng/spinner";
 import {StepsModule} from "primeng/steps";
 import {PanelModule} from "primeng/panel";
 import {TableModule} from "primeng/table";
+import {MenuModule} from "primeng/menu";
+import {SlideMenuModule} from "primeng/slidemenu";
+
+
 
 
 
@@ -37,7 +40,10 @@ import {TableModule} from "primeng/table";
     SpinnerModule,
     StepsModule,
       PanelModule,
-      TableModule
+      TableModule,
+    MenuModule,
+    SlideMenuModule
+
   ]
 
 })

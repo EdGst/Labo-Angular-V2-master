@@ -9,6 +9,7 @@ import {SharedModule} from "../../shared/shared.module";
 import {PrimeModule} from "../../shared/prime/prime.module";
 import { DetailsComponent } from './details/details.component';
 import { MatchResultComponent } from './match-result/match-result.component';
+import {StyleClassModule} from "primeng/styleclass";
 
 
 
@@ -20,12 +21,13 @@ import { MatchResultComponent } from './match-result/match-result.component';
     DetailsComponent,
     MatchResultComponent
   ],
-  imports: [
-    CommonModule,
-    TournamentRoutingModule,
-    SharedModule,
-    PrimeModule
+    imports: [
+        CommonModule,
+        TournamentRoutingModule,
+        SharedModule,
+        PrimeModule,
+        StyleClassModule
 
-  ]
+    ]
 })
 export class TournamentModule { }
